@@ -12,7 +12,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const {setShowSearch} = useContext(ShopContext)
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   const location = useLocation();
 
@@ -56,7 +56,7 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <button aria-label="Open search" onClick={()=>setShowSearch(true)}>
+        <button aria-label="Open search" onClick={() => setShowSearch(true)}>
           <img src={assets.search_icon} alt="search" className="w-5" />
         </button>
         <div className="group relative">
@@ -80,8 +80,8 @@ const Navbar = () => {
             aria-label="Cart"
             className="w-5"
           />
-          <p className="absolute -right-1 -bottom-1 w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-xs">
-            10
+          <p className="absolute -right-1 -bottom-1 w-4 text-center leading-4 bg-black text-white aspect-square rounded-full text-[10px]">
+            {getCartCount()}
           </p>
         </Link>
         <button
