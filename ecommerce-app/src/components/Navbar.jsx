@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/frontend_assets/assets";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { ShopContext } from "../context/ShopContext";
 
 const navLinks = [
   { path: "/", label: "HOME" },
@@ -11,6 +12,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
+  const {setShowSearch} = useContext(ShopContext)
 
   const location = useLocation();
 
@@ -54,7 +56,7 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <button aria-label="Open search">
+        <button aria-label="Open search" onClick={()=>setShowSearch(true)}>
           <img src={assets.search_icon} alt="search" className="w-5" />
         </button>
         <div className="group relative">
