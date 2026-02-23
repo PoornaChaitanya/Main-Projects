@@ -12,6 +12,7 @@ const ShopContextProvider = (props) => {
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
+  const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
 
   const addToCart = (itemId, size) => {
@@ -84,6 +85,21 @@ const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
+  const placeOrder = () => {
+    if (Object.keys(cartItems).length === 0) return;
+
+    const newOrder = {
+      id: Date.now(),
+      items: cartItems,
+      date: new Date().toLocaleDateString(),
+      status: "Ready to ship",
+    };
+
+    setOrders((prev) => [...prev, newOrder]);
+
+    setCartItems({}); 
+  };
+
   const value = {
     products,
     currency,
@@ -98,6 +114,8 @@ const ShopContextProvider = (props) => {
     updateQuantity,
     getCartAmount,
     navigate,
+    orders,
+    placeOrder
   };
 
   return (

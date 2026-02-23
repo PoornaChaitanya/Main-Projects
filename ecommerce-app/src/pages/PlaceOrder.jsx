@@ -6,7 +6,7 @@ import { ShopContext } from "../context/ShopContext";
 
 const PlaceOrder = () => {
   const [method, setMethod] = useState("cod");
-  const { navigate } = useContext(ShopContext);
+  const { navigate, placeOrder } = useContext(ShopContext);
 
   return (
     <div className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
@@ -122,7 +122,13 @@ const PlaceOrder = () => {
           </div>
 
           <div className="w-full text-end mt-8">
-            <button onClick={()=>navigate("/orders")} className="bg-black text-white px-16 py-3 text-sm active:bg-black/80">
+            <button
+              onClick={() => {
+                placeOrder();
+                navigate("/orders");
+              }}
+              className="w-full bg-black text-white py-3 mt-8 rounded-md hover:bg-gray-800 transition"
+            >
               PLACE ORDER
             </button>
           </div>
