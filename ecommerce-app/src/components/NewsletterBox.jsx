@@ -8,7 +8,7 @@ const NewsletterBox = () => {
   return (
     <div className="py-16 px-4 text-center bg-gray-50 rounded-lg shadow-sm">
       <p className="text-2xl sm:text-3xl font-semibold text-gray-800">
-        Get 20% Off Your First Order
+        Get 20% Off On Your First Order
       </p>
 
       <p className="text-gray-500 mt-4 max-w-xl mx-auto leading-relaxed">
