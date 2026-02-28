@@ -9,8 +9,8 @@ It is designed to simulate a production-level shopping experience with dynamic c
 
 ## 🚀 Live Demo
 
-🔗 https://your-live-demo-link.com  
-🔗 [https://github.com/your-username/your-repo-name](https://github.com/PoornaChaitanya/forever-ecommerce-react)
+🔗 https://forever-ecommerce-react.vercel.app/
+🔗 https://github.com/PoornaChaitanya/forever-ecommerce-react
 
 ---
 
@@ -113,6 +113,8 @@ http://localhost:5173
 ---
 
 ## 📸 Screenshots
+
+<img width="1918" height="865" alt="image" src="https://github.com/user-attachments/assets/577d4050-8350-4cab-b4d2-f50712844e5a" />
 
 <img width="1919" height="866" alt="Screenshot 2026-02-25 140836" src="https://github.com/user-attachments/assets/b5806d8c-1879-4280-83a2-f4d576158e4b" />
 
