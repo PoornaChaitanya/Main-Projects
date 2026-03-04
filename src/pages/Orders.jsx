@@ -23,7 +23,7 @@ const Orders = () => {
             Object.entries(order.items).map(([productId, sizes]) =>
               Object.entries(sizes).map(([size, quantity]) => {
                 const productData = products.find(
-                  (product) => product._id === productId,
+                  (product) => product.id === productId,
                 );
 
                 if (!productData) return null;

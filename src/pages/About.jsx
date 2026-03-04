@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../components/Title";
-import { assets } from "../assets/frontend_assets/assets";
+import about_img from "../assets/about_img.png";
 import NewsletterBox from "../components/NewsletterBox";
 
 const About = () => {
@@ -13,7 +13,7 @@ const About = () => {
 
       <div className="my-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <img
-          src={assets.about_img}
+          src={about_img}
           alt="Fashion collection showcase"
           className="w-full rounded-xl shadow-md object-cover"
         />

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { products } from "../assets/frontend_assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const ShopContext = createContext();
 
@@ -9,11 +9,29 @@ const ShopContextProvider = (props) => {
   const currency = "₹";
   const delivery_fee = 50;
 
+  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const API_URL = import.meta.env.VITE_API_URL;
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/products`);
+      setProducts(response.data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const addToCart = (itemId, size) => {
     if (!size) {
@@ -42,7 +60,9 @@ const ShopContextProvider = (props) => {
           if (cartItems[items][item] > 0) {
             totalCount += cartItems[items][item];
           }
-        } catch (error) {}
+        } catch (error) {
+          console.error("Error counting cart items:", error);
+        }
       }
     }
     return totalCount;
@@ -71,14 +91,14 @@ const ShopContextProvider = (props) => {
   const getCartAmount = () => {
     let totalAmount = 0;
     for (const items in cartItems) {
-      let itemInfo = products.find((product) => product._id === items);
+      let itemInfo = products.find((product) => product.id === items);
       for (const item in cartItems[items]) {
         try {
           if (cartItems[items][item] > 0) {
             totalAmount += itemInfo.price * cartItems[items][item];
           }
         } catch (error) {
-          toast.error(error);
+          console.error("Error calculating cart amount:", error);
         }
       }
     }
@@ -97,11 +117,12 @@ const ShopContextProvider = (props) => {
 
     setOrders((prev) => [...prev, newOrder]);
 
-    setCartItems({}); 
+    setCartItems({});
   };
 
   const value = {
     products,
+    loading,
     currency,
     delivery_fee,
     search,
@@ -115,7 +136,7 @@ const ShopContextProvider = (props) => {
     getCartAmount,
     navigate,
     orders,
-    placeOrder
+    placeOrder,
   };
 
   return (

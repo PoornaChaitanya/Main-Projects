@@ -1,6 +1,6 @@
 import React from "react";
 import Title from "../components/Title";
-import { assets } from "../assets/frontend_assets/assets";
+import contact_img from "../assets/contact_img.png";
 import NewsletterBox from "../components/NewsletterBox";
 
 const Contact = () => {
@@ -12,7 +12,7 @@ const Contact = () => {
 
       <div className="my-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-28">
         <img
-          src={assets.contact_img}
+          src={contact_img}
           alt="Laptop workspace setup"
           className="w-full h-auto rounded-lg object-cover max-h-[500px]"
         />

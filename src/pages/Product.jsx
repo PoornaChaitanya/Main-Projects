@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/frontend_assets/assets";
+import star_icon from "../assets/star_icon.png";
+import star_dull_icon from "../assets/star_dull_icon.png";
 import RelatedProducts from "./RelatedProducts";
 
 const Product = () => {
@@ -12,7 +13,7 @@ const Product = () => {
   const [size, setSize] = useState("");
 
   const fetchProductData = () => {
-    const foundProduct = products.find((item) => item._id === productId);
+    const foundProduct = products.find((item) => item.id === productId);
 
     if (foundProduct) {
       setProductData(foundProduct);
@@ -56,14 +57,26 @@ const Product = () => {
         {/* Product Information */}
         <div className="flex-1">
           <h1 className="font-medium text-2xl mt-2">{productData.name}</h1>
-          <div className="flex items-center gap-1 mt-2">
-            <img src={assets.star_icon} alt="star" className="w-2.5" />
-            <img src={assets.star_icon} alt="star" className="w-2.5" />
-            <img src={assets.star_icon} alt="star" className="w-2.5" />
-            <img src={assets.star_icon} alt="star" className="w-2.5" />
-            <img src={assets.star_dull_icon} alt="star" className="w-2.5" />
-            <p className="pl-2">(122)</p>
-          </div>
+          {(() => {
+            const hash = productData.id
+              .split("")
+              .reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const rating = (hash % 3) + 3; // 3, 4, or 5 stars
+            const reviewCount = 50 + (hash % 200);
+            return (
+              <div className="flex items-center gap-1 mt-2">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <img
+                    key={i}
+                    src={i < rating ? star_icon : star_dull_icon}
+                    alt="star"
+                    className="w-2.5"
+                  />
+                ))}
+                <p className="pl-2">({reviewCount})</p>
+              </div>
+            );
+          })()}
           <p className="mt-5 text-3xl font-medium">
             {currency}
             {productData.price.toLocaleString()}
@@ -86,7 +99,7 @@ const Product = () => {
             </div>
           </div>
           <button
-            onClick={() => addToCart(productData._id, size)}
+            onClick={() => addToCart(productData.id, size)}
             className="px-8 py-3 text-sm transition bg-black text-white active:bg-gray-700"
           >
             ADD TO CART

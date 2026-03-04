@@ -1,12 +1,14 @@
 import React from "react";
-import { assets } from "../assets/frontend_assets/assets";
+import exchange_icon from "../assets/exchange_icon.png";
+import quality_icon from "../assets/quality_icon.png";
+import support_img from "../assets/support_img.png";
 
 const OurPolicy = () => {
   return (
     <div className="flex flex-col sm:flex-row justify-around gap-12 sm:gap-2 text-center py-20 text-xs sm:text-sm md:text-base text-gray-700">
       <div>
         <img
-          src={assets.exchange_icon}
+          src={exchange_icon}
           alt="exchange"
           className="w-12 m-auto mb-5"
         />
@@ -15,7 +17,7 @@ const OurPolicy = () => {
       </div>
       <div>
         <img
-          src={assets.quality_icon}
+          src={quality_icon}
           alt="quality"
           className="w-12 m-auto mb-5"
         />
@@ -24,7 +26,7 @@ const OurPolicy = () => {
       </div>
       <div>
         <img
-          src={assets.support_img}
+          src={support_img}
           alt="exchange"
           className="w-12 m-auto mb-5"
         />

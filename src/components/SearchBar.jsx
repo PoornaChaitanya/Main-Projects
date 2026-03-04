@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/frontend_assets/assets";
+import search_icon from "../assets/search_icon.png";
+import cross_icon from "../assets/cross_icon.png";
 import { useLocation } from "react-router-dom";
 
 const SearchBar = () => {
@@ -19,10 +20,10 @@ const SearchBar = () => {
           onChange={(e) => setSearch(e.target.value)}
           className="flex-1 outline-none bg-inherit text-sm"
         />
-        <img src={assets.search_icon} alt="search" className="w-4" />
+        <img src={search_icon} alt="search" className="w-4" />
       </div>
       <img
-        src={assets.cross_icon}
+        src={cross_icon}
         alt="cross"
         className="inline w-3 cursor-pointer"
         onClick={() => {

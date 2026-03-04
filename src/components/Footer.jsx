@@ -1,12 +1,12 @@
 import React from "react";
-import { assets } from "../assets/frontend_assets/assets";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
     <div className="border-t border-gray-200 mt-20">
       <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 py-16 text-sm">
         <div>
-          <img src={assets.logo} alt="logo" className="mb-5 w-32" />
+          <img src={logo} alt="logo" className="mb-5 w-32" />
           <p className="w-full md:w-2/3 text-gray-600 leading-relaxed">
             Forever is built on timeless style and everyday comfort. We create
             thoughtfully designed pieces that blend quality, simplicity, and

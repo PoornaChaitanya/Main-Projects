@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { assets } from "../assets/frontend_assets/assets";
+import logo from "../assets/logo.png";
+import search_icon from "../assets/search_icon.png";
+import profile_icon from "../assets/profile_icon.png";
+import cart_icon from "../assets/cart_icon.png";
+import menu_icon from "../assets/menu_icon.png";
+import dropdown_icon from "../assets/dropdown_icon.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
@@ -23,7 +28,7 @@ const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       <Link to="/">
-        <img src={assets.logo} alt="logo" className="w-36" />
+        <img src={logo} alt="logo" className="w-36" />
       </Link>
 
       <ul className="hidden sm:flex gap-8 text-sm">
@@ -57,11 +62,11 @@ const Navbar = () => {
 
       <div className="flex items-center gap-6">
         <button aria-label="Open search" onClick={() => setShowSearch(true)}>
-          <img src={assets.search_icon} alt="search" className="w-5" />
+          <img src={search_icon} alt="search" className="w-5" />
         </button>
         <div className="group relative">
           <img
-            src={assets.profile_icon}
+            src={profile_icon}
             alt="profile icon"
             className="w-5 cursor-pointer"
           />
@@ -80,7 +85,7 @@ const Navbar = () => {
         </div>
         <Link to="/cart" className="relative">
           <img
-            src={assets.cart_icon}
+            src={cart_icon}
             alt="cart icon"
             aria-label="Cart"
             className="w-5"
@@ -94,7 +99,7 @@ const Navbar = () => {
           className="sm:hidden"
           aria-label="Open menu"
         >
-          <img src={assets.menu_icon} alt="" className="w-5" />
+          <img src={menu_icon} alt="" className="w-5" />
         </button>
       </div>
 
@@ -118,7 +123,7 @@ const Navbar = () => {
             className="flex items-center gap-4 p-3"
           >
             <img
-              src={assets.dropdown_icon}
+              src={dropdown_icon}
               alt="dropdown"
               className="h-4 rotate-180"
             />

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import Title from "../components/Title";
-import { assets } from "../assets/frontend_assets/assets";
+import bin_icon from "../assets/bin_icon.png";
 import CartTotal from "../components/CartTotal";
 
 const Cart = () => {
@@ -35,7 +35,7 @@ const Cart = () => {
       <div>
         {cartData.map((item, index) => {
           const productData = products.find(
-            (product) => product._id === item._id,
+            (product) => product.id === item._id,
           );
 
           return (
@@ -66,15 +66,14 @@ const Cart = () => {
                 </div>
               </div>
               <input
-                onChange={(e) =>
-                  e.target.value === "" || e.target.value === "0"
-                    ? null
-                    : updateQuantity(
-                        item._id,
-                        item.size,
-                        Number(e.target.value),
-                      )
-                }
+                onChange={(e) => {
+                  const val = Number(e.target.value);
+                  if (e.target.value === "" || val <= 0) {
+                    updateQuantity(item._id, item.size, 0);
+                  } else {
+                    updateQuantity(item._id, item.size, val);
+                  }
+                }}
                 className="border border-gray-200 max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
                 type="number"
                 min={1}
@@ -82,7 +81,7 @@ const Cart = () => {
               />
               <img
                 onClick={() => updateQuantity(item._id, item.size, 0)}
-                src={assets.bin_icon}
+                src={bin_icon}
                 alt="delete"
                 className="w-4 mr-4 sm:mr-2 "
               />

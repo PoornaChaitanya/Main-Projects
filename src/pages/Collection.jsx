@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
-import { assets } from "../assets/frontend_assets/assets";
+import dropdown_icon from "../assets/dropdown_icon.png";
 import Title from "../components/Title";
 import ProductItem from "../components/ProductItem";
 
@@ -120,7 +120,7 @@ const Collection = () => {
         >
           <h2 className="text-xl font-semibold">Filters</h2>
           <img
-            src={assets.dropdown_icon}
+            src={dropdown_icon}
             alt="toggle"
             className={`h-3 sm:hidden ${showFilter ? "rotate-90" : ""}`}
           />
@@ -244,8 +244,8 @@ const Collection = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filterProducts.map((item) => (
             <ProductItem
-              key={item._id}
-              id={item._id}
+              key={item.id}
+              id={item.id}
               name={item.name}
               image={item.image}
               price={item.price}
