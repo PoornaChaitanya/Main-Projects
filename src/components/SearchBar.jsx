@@ -12,7 +12,7 @@ const SearchBar = () => {
 
   const isCollectionPage = location.pathname.includes("collection");
 
-  // Auto-focus input when the bar becomes visible
+  // Auto focus input when the bar becomes visible
   useEffect(() => {
     if (showSearch && isCollectionPage && inputRef.current) {
       inputRef.current.focus();
